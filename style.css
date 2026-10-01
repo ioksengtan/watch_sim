@@ -100,3 +100,4 @@ select { background: #2c3038; color: #e6e8eb; border: 0; border-radius: 6px; pad
 .map .me { position: absolute; left: calc(50% + var(--x)); top: calc(50% + var(--y)); transform: translate(-50%, -50%); color: #4db4ff; font-size: 22px; text-shadow: 0 0 3px #000; }
 .map .scale { position: absolute; top: 26px; left: 0; right: 0; font-size: 12px; color: #fff; text-shadow: 0 0 3px #000; }
 .map .caption { color: #fff; text-shadow: 0 0 3px #000; }
+.map .cross { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); color: #fff; font-size: 26px; text-shadow: 0 0 3px #000; }
