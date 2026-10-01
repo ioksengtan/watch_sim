@@ -85,7 +85,21 @@ kbd { background: #2c3038; border-radius: 4px; padding: 1px 5px; font-size: 12px
 
 /* ---- 型號切換與各型號外觀 ---- */
 select { background: #2c3038; color: #e6e8eb; border: 0; border-radius: 6px; padding: 3px 6px; font: inherit; }
-#watch.fenix7 { background: radial-gradient(circle, #0c0d0f 70%, #6a7078 71%, #33373d 100%); }
+/* fēnix 7：參照手冊 Device Overview 機身圖——窄金屬錶圈、大螢幕、四個帶螺絲的錶耳、深色按鍵 */
+.fenix7 #watch { background: radial-gradient(circle, #0c0d0f 79%, #50555c 80%, #2b2e33 100%); box-shadow: 0 0 0 3px #1b1d20, 0 20px 50px #000a; }
+.fenix7 #watch::after { bottom: 40px; font-size: 8px; z-index: 2; color: #9aa0a8; }
+.fenix7 #screen { inset: 32px; box-shadow: 0 0 0 2px #1a1c1f; }
+.fenix7 .btn { background: linear-gradient(90deg, #3a3e44, #6b7078); width: 16px; height: 44px; }
+.fenix7 .btn-label { font-size: 8px; color: #a9afb7; }
+.fenix7 .strap::before, .fenix7 .strap::after {
+  content: ""; position: absolute; left: -26px; right: -26px; height: 78px; border-radius: 16px;
+  background:
+    radial-gradient(circle at 14px 50%, #0c0d0f 0 5px, #6a7078 5px 7px, transparent 7px),
+    radial-gradient(circle at calc(100% - 14px) 50%, #0c0d0f 0 5px, #6a7078 5px 7px, transparent 7px),
+    #2b2e33;
+}
+.fenix7 .strap::before { top: 62px; }
+.fenix7 .strap::after { bottom: 62px; }
 
 /* ---- 地圖（示意的等高線地形）---- */
 .map {
@@ -101,3 +115,5 @@ select { background: #2c3038; color: #e6e8eb; border: 0; border-radius: 6px; pad
 .map .scale { position: absolute; top: 26px; left: 0; right: 0; font-size: 12px; color: #fff; text-shadow: 0 0 3px #000; }
 .map .caption { color: #fff; text-shadow: 0 0 3px #000; }
 .map .cross { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); color: #fff; font-size: 26px; text-shadow: 0 0 3px #000; }
+.fenix7 #watch::after { bottom: 35px; }
+.fenix7 .caption { bottom: 50px; }

@@ -101,7 +101,7 @@
       const label = document.createElement('div');
       label.className = 'btn-label';
       const rot = b.angle + 90 - (Math.sin(rad) > 0.01 ? 180 : 0);
-      label.style.cssText = at(136) + `transform:translate(-50%,-50%) rotate(${rot}deg);`;
+      label.style.cssText = at(model.labelRadius || 136) + `transform:translate(-50%,-50%) rotate(${rot}deg);`;
       label.innerHTML = b.label || b.id;
       const tip = document.createElement('div');
       tip.className = 'tip';
@@ -129,7 +129,7 @@
   const pick = $('model');
   Object.entries(window.WATCH_MODELS).forEach(([id, m]) => pick.add(new Option(m.name, id, false, m === model)));
   pick.addEventListener('change', () => { location.search = '?model=' + pick.value; });
-  $('watch').classList.add(Object.keys(window.WATCH_MODELS).find((id) => window.WATCH_MODELS[id] === model));
+  $('watch').parentNode.classList.add(Object.keys(window.WATCH_MODELS).find((id) => window.WATCH_MODELS[id] === model));
   buildButtons();
   render();
   setInterval(() => { model.tick(s.vars); render(); }, 1000);

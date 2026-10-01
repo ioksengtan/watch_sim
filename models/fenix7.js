@@ -89,12 +89,14 @@
     name: 'Garmin fēnix 7',
     home: base.home,
     buttons: [
-      { id: 'LIGHT', angle: 210, key: 'l' },
+      // 角度量自手冊 Device Overview 機身圖；START 鍵帶紅色環
+      { id: 'LIGHT', angle: 211, key: 'l' },
       { id: 'UP', angle: 180, key: 'u', label: 'UP·MENU' },
       { id: 'DOWN', angle: 150, key: 'd' },
-      { id: 'START', angle: 330, key: 's', label: 'START·STOP' },
-      { id: 'BACK', angle: 30, key: 'b', label: 'BACK·LAP' },
+      { id: 'START', angle: 331, key: 's', label: 'START·STOP', color: 'linear-gradient(90deg,#3a3e44 45%,#e0564a 45% 70%,#3a3e44 70%)' },
+      { id: 'BACK', angle: 29, key: 'b', label: 'BACK·LAP' },
     ],
+    labelRadius: 154, // 按鍵名刻在較窄的金屬錶圈上
     global: Object.assign({}, base.global, {
       'BACK:hold': { label: '打開最近使用的應用程式列表', do: 'recent' },
     }),
