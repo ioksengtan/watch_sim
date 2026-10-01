@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Garmin 按鍵模擬器</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="stage">
+    <div class="strap"></div>
+    <div id="watch"><div id="screen"></div></div>
+  </div>
+
+  <div class="panel">
+    <h1>Garmin 按鍵模擬器</h1>
+    <p class="sub"><select id="model"></select> · 點擊為短按，按住 0.6 秒為長按 · 鍵盤 <kbd>L</kbd> <kbd>U</kbd> <kbd>D</kbd> <kbd>S</kbd> <kbd>B</kbd>，加 <kbd>Shift</kbd> 為長按</p>
+
+    <div class="box"><h2>目前位置</h2><div id="path"></div></div>
+    <div class="box"><h2>剛才的操作</h2><div id="log"></div></div>
+  </div>
+
+  <script src="models/fr255.js"></script>
+  <script src="models/fenix7.js"></script>
+  <script src="engine.js"></script>
+</body>
+</html>

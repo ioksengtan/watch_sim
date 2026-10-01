@@ -1,0 +1,102 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0; min-height: 100vh; background: #14161a; color: #e6e8eb;
+  font-family: system-ui, "Microsoft JhengHei", "PingFang TC", sans-serif;
+  display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: center; padding: 24px;
+}
+h1 { font-size: 18px; margin: 0 0 4px; }
+.sub { color: #8b93a0; font-size: 13px; margin: 0 0 16px; }
+
+/* ---- 手錶 ---- */
+/* 機身比例參照手冊 Overview 的機身圖：黑色錶殼、錶圈內側印按鍵名、上下錶帶 */
+.stage { width: 720px; height: 470px; position: relative; flex: none; overflow: hidden; }
+@media (max-width: 770px) { .stage { zoom: .78; } }
+@media (max-width: 610px) { .stage { zoom: .6; } }
+.tip {
+  position: absolute; width: 160px; transform: translateY(-50%); padding: 7px 9px; border-radius: 8px;
+  background: #1e2127; font-size: 12px; line-height: 1.4; color: #e6e8eb;
+}
+.tip b { display: block; font-size: 11px; letter-spacing: .5px; color: #aab2bf; margin-bottom: 2px; }
+.tip b i { font-style: normal; color: #e0392f; }
+.tip span { color: #f5a623; margin-right: 5px; }
+.tip .none, .tip .none span { color: #4b515b; }
+.strap {
+  position: absolute; left: 50%; top: 0; bottom: 0; width: 170px; margin-left: -85px; border-radius: 14px;
+  background: repeating-linear-gradient(135deg, #1b1d21 0 6px, #17191c 6px 12px);
+}
+#watch {
+  position: absolute; left: 50%; top: 50%; width: 340px; height: 340px; margin: -170px 0 0 -170px;
+  border-radius: 50%; background: radial-gradient(circle, #0c0d0f 72%, #1c1e22 73%, #101113 100%);
+  box-shadow: 0 0 0 3px #26292e, 0 20px 50px #000a;
+}
+#watch::after { /* 錶圈下方的品牌字位置 */
+  content: "GARMIN"; position: absolute; left: 0; right: 0; bottom: 22px; text-align: center;
+  font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: #c9cdd3; pointer-events: none;
+}
+#screen {
+  position: absolute; inset: 48px; border-radius: 50%; overflow: hidden;
+  background: #000; color: #cfd3d8; transition: filter .2s; z-index: 1;
+  display: flex; align-items: center; justify-content: center; text-align: center; user-select: none;
+}
+#screen.lit { filter: brightness(1.6); }
+.btn {
+  position: absolute; width: 14px; height: 40px; padding: 0; border: 0; border-radius: 5px;
+  background: linear-gradient(90deg, #8d939c, #d9dde2); cursor: pointer; touch-action: none;
+}
+.btn::before { content: ""; position: absolute; inset: -8px -14px; } /* 放大點擊範圍 */
+.btn:hover { filter: brightness(1.25); }
+.btn.down { background: #f5a623 !important; }
+.btn-label {
+  position: absolute; white-space: nowrap; z-index: 2;
+  font-size: 9px; font-weight: 700; letter-spacing: .5px; color: #e6e8eb; pointer-events: none;
+}
+.btn-label i { font-style: normal; color: #e0392f; }
+
+/* ---- 螢幕內容 ---- */
+.accent { color: #f5a623; }
+.face, .act { display: flex; flex-direction: column; gap: 8px; align-items: center; }
+.face b, .act b { font-size: 64px; line-height: 1; color: #fff; font-variant-numeric: tabular-nums; }
+.face small, .act small { font-size: 14px; }
+.face-big { gap: 0; }
+.face-big b { font-size: 84px; }
+.face-big b.accent { color: #f5a623; }
+.face-data b { font-size: 52px; color: #7fd4ff; }
+.caption { position: absolute; bottom: 22px; left: 0; right: 0; font-size: 12px; color: #f5a623; }
+.list, .info { width: 100%; }
+.title { font-size: 12px; color: #8b93a0; margin-bottom: 10px; }
+.row { height: 44px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 16px; }
+.row.dim { color: #5d646f; font-size: 14px; }
+.row.sel { background: #fff; color: #000; font-weight: 700; font-size: 20px; }
+.pos { font-size: 11px; color: #5d646f; margin-top: 8px; }
+.info .body { font-size: 20px; line-height: 1.5; color: #fff; }
+
+/* ---- 說明面板 ---- */
+.panel { width: 440px; max-width: 100%; }
+.box { background: #1e2127; border-radius: 10px; padding: 14px 16px; margin-bottom: 12px; }
+.box h2 { font-size: 12px; font-weight: 600; color: #8b93a0; margin: 0 0 8px; }
+#path { font-size: 15px; }
+#log { font-size: 14px; color: #f5a623; min-height: 1.4em; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { text-align: left; padding: 6px 6px; border-top: 1px solid #2c3038; vertical-align: top; }
+thead th { border-top: 0; color: #8b93a0; font-weight: 500; }
+tbody th { width: 64px; }
+td.none { color: #4b515b; }
+kbd { background: #2c3038; border-radius: 4px; padding: 1px 5px; font-size: 12px; }
+
+/* ---- 型號切換與各型號外觀 ---- */
+select { background: #2c3038; color: #e6e8eb; border: 0; border-radius: 6px; padding: 3px 6px; font: inherit; }
+#watch.fenix7 { background: radial-gradient(circle, #0c0d0f 70%, #6a7078 71%, #33373d 100%); }
+
+/* ---- 地圖（示意的等高線地形）---- */
+.map {
+  position: absolute; inset: 0;
+  background: repeating-radial-gradient(circle at calc(35% + var(--x)) calc(40% + var(--y)),
+    #1f3d2c 0 calc(7px * var(--z)), #3b6b4a calc(7px * var(--z)) calc(7px * var(--z) + 1.5px));
+}
+.map .track {
+  position: absolute; left: calc(50% + var(--x)); top: calc(50% + var(--y)); width: calc(18px * var(--z)); height: calc(26px * var(--z));
+  border: 3px solid #ff5ad1; border-width: 0 0 3px 3px; border-radius: 0 0 0 60%; transform: translate(-100%, 0);
+}
+.map .me { position: absolute; left: calc(50% + var(--x)); top: calc(50% + var(--y)); transform: translate(-50%, -50%); color: #4db4ff; font-size: 22px; text-shadow: 0 0 3px #000; }
+.map .scale { position: absolute; top: 26px; left: 0; right: 0; font-size: 12px; color: #fff; text-shadow: 0 0 3px #000; }
+.map .caption { color: #fff; text-shadow: 0 0 3px #000; }
