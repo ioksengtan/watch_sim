@@ -1,6 +1,32 @@
-# Garmin 按鍵模擬器 · Garmin Button Simulator
+# 按鍵模擬器 · Button Simulators
 
 **▶ 線上試用 / Live demo：<https://ioksengtan.github.io/watch_sim/>**
+
+本倉庫目前有兩個產品的按鍵模擬器，頁面上方互有切換連結：
+
+| 產品 | 頁面 | 說明 |
+| --- | --- | --- |
+| Garmin 手錶（Forerunner 255、fēnix 7） | `index.html`（首頁） | 見下方「Garmin 按鍵模擬器」 |
+| 惠而浦洗衣機 8TWTW4955JW | [`washer.html`](https://ioksengtan.github.io/watch_sim/washer.html) | 見下方「惠而浦洗衣機按鍵模擬器」 |
+
+## 惠而浦洗衣機按鍵模擬器
+
+直立式洗衣機 8TWTW4955JW 的控制面板模擬：五顆旋鈕（衣物髒度、洗衣水溫、洗衣行程、洗清選擇、水位選擇）、啟動／暫停鍵（短按與按住滿 3 秒取消）、六顆進度與門鎖指示燈。行程依手冊第 22 頁行程指南的 12 個行程走對應階段；上蓋開關、推進階段與異常情境由面板外明示的「模擬器工具」提供。
+
+- 依據官方手冊《上開式高效能低水量洗衣機使用保養手冊》（文件編號 W11590301A，繁體中文／英文，36 頁）：[官方 PDF](https://www.whirlpool.com/content/dam/global/documents/202201/owners-manual-w11590301-revA.pdf)。README 與頁面只整理操作規則並附頁碼，不轉貼手冊原文。
+- 只實作手冊有載明的行為；手冊查無的項目（水位選擇旋鈕效果、電源鍵、童鎖、預約、數字顯示幕、各段分鐘數等）在頁面「未實作與限制」一節明列，不腦補。
+- 面板為研究用示意排列，元件位置未經官方圖像核對，非原機精確配置。非官方學習工具，與惠而浦（Whirlpool）無關。
+
+相關檔案：`washer.html`、`washer.css`、`washer-model.js`（純狀態機，不含 DOM）、`washer-app.js`（介面層）。
+
+### 測試
+
+```bash
+node --test tests/washer-model.test.js   # 洗衣機狀態機單元測試
+node tests/e2e.mjs                        # 端對端：兩頁可開、無錯誤、390px 寬不橫向捲動（需 playwright-core 與 Chrome）
+```
+
+## Garmin 按鍵模擬器 · Garmin Button Simulator
 
 忘記 Garmin 手錶該按哪顆鍵嗎？這是一個網頁版的手錶模擬器：點擊錶身四周的實體按鍵，螢幕就會切到對應的下一個畫面，用「操作即回饋」的方式複習按鍵邏輯，不用戴著錶瞎按。
 

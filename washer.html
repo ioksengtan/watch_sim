@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>惠而浦洗衣機按鍵模擬器</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="washer.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="switch"><a href="index.html">← 切換到 Garmin 手錶按鍵模擬器</a></p>
+    <h1>惠而浦洗衣機按鍵模擬器</h1>
+    <p class="sub">機型：惠而浦（Whirlpool）8TWTW4955JW 直立式洗衣機。依據官方手冊
+      《上開式高效能低水量洗衣機使用保養手冊》（文件編號 W11590301A，繁體中文／英文，36頁）：
+      <a class="longlink" href="https://www.whirlpool.com/content/dam/global/documents/202201/owners-manual-w11590301-revA.pdf" rel="noopener">官方手冊 PDF 連結</a>。
+    </p>
+    <p class="sub warn">本頁為非官方學習工具，與惠而浦無關；控制面板為研究用示意排列，
+      元件相對位置與旋鈕檔位順序未經官方圖像核對，並非原機精確配置。</p>
+    <p class="sub">示範起始設定（標明為示範，非原廠預設；原廠預設手冊查無）：標準行程、標準髒度、
+      自來水、一次洗清（自動偵測水位）。起始情境：已接電、上蓋關閉、尚未啟動。</p>
+  </header>
+
+  <section class="machine" aria-label="控制面板（研究用示意）">
+    <h2>控制面板<small>（研究用示意排列，非原機配置）</small></h2>
+
+    <div class="lights" id="lights"></div>
+
+    <div class="knobs" id="knobs"></div>
+    <p class="hint">點一下旋鈕＝往下一檔轉動。洗衣水溫面板標有「需接熱水管」；水位選擇旋鈕僅保留外觀，
+      效果未實作（手冊圖文衝突）。</p>
+
+    <div class="startrow">
+      <button id="startBtn" type="button">啟動／暫停</button>
+      <span class="btnnote">短按＝喚醒／開始／暫停／繼續；按住滿 3 秒＝取消行程（鍵旁面板標示「按壓3秒取消」）</span>
+    </div>
+  </section>
+
+  <section class="simtools">
+    <h2>模擬器工具<small>（不是實機按鍵，僅供研究測試）</small></h2>
+    <div class="toolbtns">
+      <button id="lidBtn" type="button">打開上蓋</button>
+      <button id="advanceBtn" type="button">推進階段</button>
+      <button id="drumBtn" type="button">槽已停止旋轉</button>
+      <button id="tenMinBtn" type="button">開蓋暫停已達10分鐘</button>
+      <button id="fillAnomalyBtn" type="button">注入異常：無法正常注水</button>
+      <button id="drainAnomalyBtn" type="button">注入異常：10分鐘內無法排水</button>
+      <button id="resetBtn" type="button">重設模擬器</button>
+    </div>
+    <div class="box">
+      <h3>模擬器狀態（非實機顯示幕；本機型沒有數字或文字顯示幕）</h3>
+      <div id="simState" class="simstate"></div>
+      <div id="message" class="message" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="notes">
+    <h2>未實作與限制</h2>
+    <p>以下項目在手冊中「查無」或互相衝突，依研究規格不實作、不腦補：</p>
+    <ul>
+      <li>水位選擇旋鈕的效果：手冊圖示寫「自動偵測／高水位」、正文又寫成浸泡功能，圖文衝突，僅保留旋鈕外觀。</li>
+      <li>面板文字擷取出現「白色」字樣，但行程指南沒有同名行程；是否為實際檔位查無，未實作，
+        也不以「高水位洗衣」或「少量快洗」代換。</li>
+      <li>電源鍵、童鎖、預約、時間加減、轉速選擇鍵、數字倒數顯示幕、英數錯誤代碼：手冊查無，不建立。</li>
+      <li>各階段實際分鐘數、水量公升數、攝氏溫度、每分鐘轉速、閃爍頻率、蜂鳴聲：手冊查無，不顯示；
+        階段前進改用面板外的「推進階段」模擬器工具。</li>
+      <li>喚醒時的開機燈號組合：手冊第24頁的燈號編號與實體燈對照未經圖像確認，暫不映射。</li>
+      <li>運轉中變更設定、不相容組合的實機反應、取消後的燈號與是否排水、完成燈熄滅時機、
+        異常解除後的自動恢復：手冊查無，未實作。</li>
+      <li>衣物髒度／洗清選擇／水位選擇的逐行程相容表查無；洗清選擇依手冊「適用大部分行程」套用於含洗清階段的行程。</li>
+      <li>「單獨浸泡」的浸泡與排水階段、「槽洗淨」的詳細階段組成：進度燈對應查無，這些階段面板燈不亮，
+        僅在模擬器狀態區顯示。</li>
+    </ul>
+    <p>行程階段依手冊第22頁行程指南：例如「單獨浸泡」不脫水、「單獨脫水」不加洗衣與洗清、
+      「洗清&amp;脫水」不加洗衣、「冷水洗衣」僅允許冷水；脫水轉速由行程決定，不可手選。</p>
+  </section>
+</div>
+
+<script src="washer-model.js"></script>
+<script src="washer-app.js"></script>
+</body>
+</html>
