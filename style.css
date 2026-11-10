@@ -5,6 +5,7 @@ body {
   display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: center; padding: 24px;
 }
 h1 { font-size: 18px; margin: 0 0 4px; }
+a { color: #7fd4ff; }
 .sub { color: #8b93a0; font-size: 13px; margin: 0 0 16px; }
 
 /* ---- 手錶 ---- */
@@ -12,6 +13,7 @@ h1 { font-size: 18px; margin: 0 0 4px; }
 .stage { width: 720px; height: 470px; position: relative; flex: none; overflow: hidden; }
 @media (max-width: 770px) { .stage { zoom: .78; } }
 @media (max-width: 610px) { .stage { zoom: .6; } }
+@media (max-width: 430px) { .stage { zoom: .47; } body { padding: 16px 8px; } }
 .tip {
   position: absolute; width: 160px; transform: translateY(-50%); padding: 7px 9px; border-radius: 8px;
   background: #1e2127; font-size: 12px; line-height: 1.4; color: #e6e8eb;
